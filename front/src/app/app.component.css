@@ -1,0 +1,8 @@
+
+
+.orange{
+    margin:15px;
+    border-radius:20px;
+    background: linear-gradient(orange, black);
+    min-height:100%;
+}

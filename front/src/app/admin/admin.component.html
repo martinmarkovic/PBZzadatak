@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="col-xs-12 col-sm-10 col-md-4 col-sm-offset-1 col-md-offset-2">
+  <div class="orange">
+
+    
+
+    <form #formLogout="ngForm" (ngSubmit)="OnLogout(formLogout.value)">
+
+      <h1 class="display-3">Diplomski Rad</h1>
+      Dobrodošli {{user}} na admin stranicu <br>
+
+
+
+    </form>
+  </div>
+
+  <hr>
+
+  <form #formRef="ngForm" (ngSubmit)="getUsers()">
+    <div class="row">
+      <button type="submit" class="btn-primary btn">GetUsers</button>
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-10 col-md-offset-10">
+        Search:
+        <input type="text" name="search" [(ngModel)]="search" placeholder="Find users by name" />
+      </div>
+    </div>
+    <table id="example" class="table table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of users | filter:search ">
+          <td>{{user.username }}</td>
+          <td>{{user.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>

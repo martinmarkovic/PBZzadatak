@@ -1,0 +1,31 @@
+{
+  "name": "back",
+  "private": true,
+  "version": "0.0.1",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "ejs": "^2.5.6",
+    "include-all": "^4.0.3",
+    "jsonwebtoken": "^7.4.1",
+    "lodash": "^4.17.4",
+    "rc": "^1.2.1",
+    "sails": "~0.12.13",
+    "sails-disk": "~0.10.9",
+    "sails-hook-autoreload": "^0.13.2",
+    "sails-hook-email": "^0.12.1",
+    "sails-mongo": "^0.12.3"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/josip/back.git"
+  },
+  "author": "Gauss Development, JS backend team",
+  "license": ""
+}

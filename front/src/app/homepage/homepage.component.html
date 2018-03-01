@@ -1,0 +1,18 @@
+<div>
+      <app-header></app-header>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-sm-offset-2 col-md-offset-2">
+  <h1>{{user|uppercase}} dobrodošli </h1>
+
+
+  <app-edit 
+    *ngIf="user" 
+    [note]="note"
+    (spremanjeEdita)="handleSpremanjeNote($event)"
+    >
+    
+  </app-edit>
+
+
+</div>

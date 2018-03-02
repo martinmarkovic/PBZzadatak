@@ -57,8 +57,9 @@ export class UserService {
         headers.append('token', localStorage.getItem('token'));
         let options = new RequestOptions({ headers: headers });
         let body = { email }
-        return this.http.post('http://localhost:1337/api/saveNote', body, options)
-            .map((response: Response) => localStorage.setItem('note', response.json().note));
+        console.log(localStorage.token);
+        return this.http.post('http://localhost:1337/api/changeMail', body, options)
+            .map((response: Response) => localStorage.setItem('email', response.json().email));
     }
 }
 

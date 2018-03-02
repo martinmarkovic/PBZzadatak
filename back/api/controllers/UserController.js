@@ -27,7 +27,7 @@ module.exports = {
 
     const data = req.allParams();
 
-    User.update({ id: data.token.id }, { email: data.email })
+    User.update({ id: req.token.id }, { email: data.email })
       .exec(function (err, updatedUser) {
         if (err) return res.negotiate();
         if (!updatedUser) return res.notFound('User not found!');

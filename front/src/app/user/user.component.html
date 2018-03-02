@@ -3,10 +3,10 @@
       
 </div>
 <div class="editUser" *ngIf="user">
-    <form [formGroup]="rForm" (ngSubmit)="editUser(rForm.value)">
-        <p><label>username:</label><br><input type="text" formControlName="username" [(ngModel)]="user.username"></p>
-        <p><label>e-mail:</label><br><input type="text" formControlName="email"[(ngModel)]="user.email"></p>
+    <form [formGroup]="rForm" (ngSubmit)="promjenaMaila(rForm.value)">
+        {{user.username|uppercase}} <br><br>
+         <p><label> Želite li promjeniti e-mail?</label><br><input type="text" formControlName="email"[(ngModel)]="user.email"></p>
         <br>
-        <button type="submit">Save Changes</button>
+        <button type="submit">Promjena</button>
     </form>
  </div>

@@ -42,20 +42,21 @@ export class UserService {
             .map((res: Response) => res.json())
             .catch(this.handleError);
     }
-    editUser(form) {
-        let headers = new Headers();
-        headers.append('token', localStorage.getItem('token'));
-        let options = new RequestOptions({ headers: headers });
-        return this.http.put('http://localhost:1337/api/user/editUser', form, options)
-            .map((res: Response) => res.json());
-
-    }
 
     spremanjeNote(user, note) {
         let headers = new Headers();
         headers.append('token', localStorage.getItem('token'));
         let options = new RequestOptions({ headers: headers });
         let body = { user, note }
+        return this.http.post('http://localhost:1337/api/saveNote', body, options)
+            .map((response: Response) => localStorage.setItem('note', response.json().note));
+    }
+
+    promjenaMaila(user, email) {
+        let headers = new Headers();
+        headers.append('token', localStorage.getItem('token'));
+        let options = new RequestOptions({ headers: headers });
+        let body = { user, email }
         return this.http.post('http://localhost:1337/api/saveNote', body, options)
             .map((response: Response) => localStorage.setItem('note', response.json().note));
     }

@@ -12,14 +12,14 @@ import { Http } from "@angular/http/http";
 export class UserComponent implements OnInit {
 user: User;
 rForm : FormGroup;
+email=localStorage.email;
+
   constructor(private _userservice: UserService,
               private fb: FormBuilder){
   if(this.user){this.rForm = fb.group({
-    'username':[this.user.username],
     'email':[this.user.email]
   }) }else{
     this.rForm = fb.group({
-    'username':[null],
     'email':[null]
   })
   }
@@ -37,8 +37,13 @@ rForm : FormGroup;
     })
     
   }
-  editUser(form){
-    return this._userservice.editUser(form).subscribe(res =>{console.log('User has been edited')})
-    
+
+  promjenaMaila(email){
+    console.log(email);
+
+    this._userservice.promjenaMaila(email)
+        .subscribe(result => this.email = console.log(result))
+
   }
+  
 }

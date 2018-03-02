@@ -42,7 +42,7 @@ email=localStorage.email;
     console.log(email);
 
     this._userservice.promjenaMaila(email)
-        .subscribe(result => this.email = console.log(result))
+        .subscribe(result => this.email = (result))
 
   }
   

@@ -52,11 +52,11 @@ export class UserService {
             .map((response: Response) => localStorage.setItem('note', response.json().note));
     }
 
-    promjenaMaila(user, email) {
+    promjenaMaila(email) {
         let headers = new Headers();
         headers.append('token', localStorage.getItem('token'));
         let options = new RequestOptions({ headers: headers });
-        let body = { user, email }
+        let body = { email }
         return this.http.post('http://localhost:1337/api/saveNote', body, options)
             .map((response: Response) => localStorage.setItem('note', response.json().note));
     }

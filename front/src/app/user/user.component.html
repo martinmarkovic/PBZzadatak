@@ -7,6 +7,7 @@
         {{user.username|uppercase}} <br><br>
          <p><label> Želite li promjeniti e-mail?</label><br><input type="text" formControlName="email"[(ngModel)]="user.email"></p>
         <br>
-        <button type="submit">Promjena</button>
+        <button type="submit">Promjena</button><br><br>
+        Obrišite account ovdje <br><br><button onclick="softDelete()">Delete</button>
     </form>
  </div>

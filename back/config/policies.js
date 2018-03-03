@@ -52,7 +52,8 @@ module.exports.policies = {
   'UserController': { // Name of your controller
     'signup': true, // We dont need authorization here, allowing public access
     'login': true, // We dont need authorization here, allowing public access
-    //'saveNote':true,
+    
+    'saveNote':true,
     // Admin routes:
     'adminGetUsers': ['isAuthorized', 'isAdmin'],
     'adminDeleteUser': ['isAuthorized', 'isAdmin'], // hard delete (admin)
@@ -65,6 +66,6 @@ module.exports.policies = {
     'userRestoreProfile': ['isAuthorized'],
     'userGetMyProfile': ['isAuthorized'],
     'userGetProfile': ['isAuthorized'],
-    'changeMail':['isAuthorized']
+    'changeMail': ['isAuthorized']
   }
 };

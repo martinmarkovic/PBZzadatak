@@ -24,29 +24,47 @@ module.exports = {
   },
 
   login: function (req, res) {
-    const data = req.body;
 
-    if (!data.password || !data.username) return res.badRequest('Missing credentials: username, email or password');
+    let params = _.pick(req.allParams(), ['username', 'password']);
+    if (!params.password) return res.badRequest('Password field is required.');
+    if (params.password.length < 6) return res.badRequest('Password has to be at least 6 characters long.');
 
-    User.findOne({ username: data.username })
-      .then((user) => {
-        if (!user || user.deleted) return res.notFound('User not found!');
-        User.comparePassword(data.password, user.encryptedPassword)
-          .then(() => {
-            return res.send(
-              {
-                isAdmin: user.admin, username: user.username,note:user.note, token: JwtService.issue({ id: user.id })
-              })
-          })
-          .catch((err) => {
-            return res.forbidden();
+    User.findOne({ username: params.username })
+      .exec(function (err, foundUser) {
+        if (err) return res.negotiate(err);
+        if (!foundUser) return res.notFound('User not found!');
+       // if (foundUser.isDeleted) return res.badRequest('User is deleted. Activate account by sending an email.');
+       // if (foundUser.isBanned) return res.badRequest('User is banned. Contact postmaster@posao.hr');
+
+        /* User.validatePassword(params.password, foundUser, function (err, match) {
+          if (err || !match) return res.badRequest('Wrong password!');
+
+          foundUser.fromIP = req.ip;
+          foundUser.loginNo = foundUser.loginNo + 1;
+          // foundUser.isAlive = true;
+          // AKO JE USER employee i ulogirao se, autoriziraj
+          if (foundUser.userType === 'employee') foundUser.isActivated === true;
+          // AKO JE USER employer i OIB nije provjeren, preskoči autorizaciju dok se to ne sredi 
+          // (po defaultu su svi neautorizirani).
+
+          if (!foundUser.firstLoginAt) foundUser.firstLoginAt = moment().format('YYYY-MM-DD HH:mm:ss.SSSSSSS');
+          foundUser.lastLoginAt = moment().format('YYYY-MM-DD HH:mm:ss.SSSSSSS');
+
+          foundUser.save(function (err) {
+            if (err) return res.negotiate(err);
+*/
+            return res.ok({
+              username: foundUser.username,
+              email: foundUser.email,
+              
+              token: JwtService.issueToken(req, foundUser)
+            });
           });
-      })
-      .catch((err) => {
-        sails.log.error(err);
-        return res.serverError();
-      });
+
+        
+      
   },
+
 
   signup: function (req, res) {
 
@@ -88,7 +106,7 @@ module.exports = {
     .then((user) => {
         Mailer.sendWelcomeMail(user); // use email service
         res.send({
-          token: JwtService.issue({ id: user.id }),
+          token: JwtService.issueToken({ id: user.id }),
         }); // payload is { id: user.id}
       })
       .catch((err) => {
@@ -175,20 +193,21 @@ module.exports = {
   },
 
   adminDeleteUser: function (req, res) {
-
-    if (!req.param('id')) {
+   
+    if (!req.param("id")) {
       return res.badRequest('id is a required parameter.');
     }
 
     User.destroy({
-      id: req.param('id')
+      id: req.param("id")
     }).exec(function (err, usersDestroyed) {
       if (err) return res.negotiate(err);
       if (usersDestroyed.length === 0) {
         return res.notFound();
       }
-      return res.ok();
+     
     });
+    return res.ok();
   },
 
   userRemoveProfile: function (req, res) {

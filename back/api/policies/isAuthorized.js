@@ -1,24 +1,23 @@
-'use strict';
+var _ = require('lodash');
 
-module.exports = (req, res, next) => {
+module.exports = function (req, res, next) {
 
-  let token;
+  JwtService.getToken(req, function (err, rawToken) {
+    if (err || !rawToken) return res.badRequest(err || 'noToken');
+    JwtService.verifyToken(rawToken, function (err, token) {
+      if (err) return res.unauthorized('invalidToken');
+             
+        User.findOne({ id: token.id }).exec(function (err, foundAdmin) {
+          if (err || !foundAdmin) return res.forbidden(err);
+          req.options.admin = token.admin;
+          req.options.id = token.id;
+next();  
 
-  if (req.headers && req.headers.token) {
-    token = req.headers.token;
-    if (token.length <= 0) return res.json(401, { err: 'Format is Authorization: Bearer [token]' });
-
-  } else if (req.param('token')) {
-    token = req.param('token');
-    // We delete the token from param to not mess with blueprints
-    // delete req.query.token;
-  } else {
-    return res.json(401, { err: 'No Authorization header was found' });
-  }
-
-  JwtService.verify(token, function (err, token) {
-    if (err) return res.json(401, { err: 'Invalid Token!' });
-    req.token = token; // This is the decrypted token or the payload you provided
-    next();
+        });
+        
+    });
+   
   });
+
+  
 };

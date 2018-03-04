@@ -8,12 +8,34 @@
 
 module.exports = {
   
+  searchUser: function(req, res){
+    const data = req.allParams();
+    User.find({deleted:data.deleted,admin:data.admin}).exec(function (err, users) {
+
+      if (err) return res.negotiate(err);
+
+      return res.json(users);
+    })
+  },
   
   saveNote: function (req, res) {
 
     const data = req.allParams();
 
     User.update({ id: req.token.id }, { note: data.note })
+      .exec(function (err, updatedUser) {
+        if (err) return res.negotiate();
+        if (!updatedUser) return res.notFound('User not found!');
+
+        // Return the updated user
+        return res.json(updatedUser);
+      })
+  },
+  changeMail: function (req, res) {
+
+    const data = req.allParams();
+
+    User.update({ id: req.token.id }, { email: data.email })
       .exec(function (err, updatedUser) {
         if (err) return res.negotiate();
         if (!updatedUser) return res.notFound('User not found!');

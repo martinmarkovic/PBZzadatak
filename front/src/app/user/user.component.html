@@ -1,12 +1,13 @@
 <div>
-      <app-header></app-header>
-      
+    <app-header></app-header>
+    
 </div>
 <div class="editUser" *ngIf="user">
-    <form [formGroup]="rForm" (ngSubmit)="editUser(rForm.value)">
-        <p><label>username:</label><br><input type="text" formControlName="username" [(ngModel)]="user.username"></p>
-        <p><label>e-mail:</label><br><input type="text" formControlName="email"[(ngModel)]="user.email"></p>
-        <br>
-        <button type="submit">Save Changes</button>
-    </form>
- </div>
+  <form [formGroup]="rForm" (ngSubmit)="promjenaMaila(rForm.value)">
+      {{user.username|uppercase}} <br><br>
+       <p><label> Želite li promjeniti e-mail?</label><br><input type="text" formControlName="email"[(ngModel)]="user.email"></p>
+      <br>
+      <button type="submit">Promjena</button><br><br>
+      Obrišite account ovdje <br><br><button onclick="softDelete()">Delete</button>
+  </form>
+</div>

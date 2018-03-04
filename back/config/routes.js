@@ -61,6 +61,9 @@ module.exports.routes = {
   'PATCH /api/user/editProfile': 'UserController.userEditProfile',
   'PATCH /api/user/removeProfile': 'UserController.userRemoveProfile',
   'PATCH /api/user/restoreProfile': 'UserController.userRestoreProfile',
-  'POST /api/saveNote': 'UserController.saveNote'
+  'POST /api/saveNote': 'UserController.saveNote',
+  'POST /api/changeMail': 'UserController.changeMail',
+  'POST /api/searchUser': 'UserController.searchUser'
+  
 
 };

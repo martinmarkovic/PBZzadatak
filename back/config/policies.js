@@ -65,5 +65,6 @@ module.exports.policies = {
     'userRestoreProfile': ['isAuthorized'],
     'userGetMyProfile': ['isAuthorized'],
     'userGetProfile': ['isAuthorized'],
+    'searchUser': ['isAuthorized']
   }
 };

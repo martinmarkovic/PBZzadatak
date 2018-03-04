@@ -8,7 +8,16 @@
 
 module.exports = {
   
-  
+  searchUser: function(req, res){
+    const data = req.allParams();
+    User.find({deleted:data.deleted,admin:data.admin}).exec(function (err, users) {
+
+      if (err) return res.negotiate(err);
+
+      return res.json(users);
+    })
+  },
+
   saveNote: function (req, res) {
 
     const data = req.allParams();

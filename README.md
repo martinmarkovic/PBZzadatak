@@ -8,11 +8,11 @@ Za pokretanje backenda potrebno je u jednom termial prozoru pokrenuti "mongod", 
 Za pokretanje frontenda potrebno je u terminal unjeti "npm start" ili "ng serve".
 
 ## Što je sve u funkciji:
--Unos informacija u bazu podataka (register sustav)
--Promjena i brisanje ( za ulogirane korisnike po kriterijima moguća promjena osobne bilješke)
--Pretraživanje po više kriterija (radi samo na backendu)
--Forme za unos sa traženom kontrolom koja se nalazi kako u front endu tako i na backendu. Kod registracije nije moguće unjeti emai lpogrešknog formata, username samanje od 6 znakova i slično.
--Proizvoljna funckija, JWT. Token autorizacija i autentifikcija za backend koja kontrolira bilo koji proces kao dodana mjera sigurnosti za aplikaciju.
+Unos informacija u bazu podataka (register sustav)
+Promjena i brisanje ( za ulogirane korisnike po kriterijima moguća promjena osobne bilješke)
+Pretraživanje po više kriterija (radi samo na backendu)
+Forme za unos sa traženom kontrolom koja se nalazi kako u front endu tako i na backendu. Kod registracije nije moguće unjeti emai lpogrešknog formata, username samanje od 6 znakova i slično.
+Proizvoljna funckija, JWT. Token autorizacija i autentifikcija za backend koja kontrolira bilo koji proces kao dodana mjera sigurnosti za aplikaciju.
 
 ## Objašnjenje:
 Određene funkcije rade samo u backendu budući da je angualr4 vrlo složene arhitekture zbog koje se u novijim verzijama popravilo neefikasnosti i nelogičnosti koje su postojale u ovoj verziji. Osobno nisam sve još razumio jer se angualr bazira više na poznavanju informacija vezanih uz sam framework na logici algoritama nego . Ono što radi u front endu su registracija, login i note change. Menu je sastavljen od vise komponenti koje se ucitavaju po potrebi bez reloada stranice (singlepage app). 

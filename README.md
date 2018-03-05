@@ -19,9 +19,9 @@ Pretraživanje po više kriterija (radi samo na backendu)
 
 Promjena emaila (radi samo na backendu)
 
-Ispis svih članova baze podataka (samo backend)
+Ispis svih članova baze podataka (samo na backendu)
 
-Forme za unos sa traženom kontrolom koja se nalazi kako u front endu tako i na backendu. Kod registracije nije moguće unjeti emai lpogrešknog formata, username samanje od 6 znakova i slično.
+Forme za unos sa traženom kontrolom koja se nalazi kako u front endu tako i na backendu. Kod registracije nije moguće unjeti email pogrešknog formata, username sa manje od 6 znakova i slično.
 
 Proizvoljna funckija, JWT. Token autorizacija i autentifikcija za backend koja kontrolira bilo koji proces kao dodana mjera sigurnosti za aplikaciju.
 

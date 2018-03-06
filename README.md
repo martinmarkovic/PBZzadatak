@@ -27,3 +27,4 @@ Proizvoljna funckija, JWT. Token autorizacija i autentifikcija za backend koja k
 
 ## Objašnjenje:
 Određene funkcije rade samo u backendu budući da je angualr4 vrlo složene arhitekture zbog koje se u novijim verzijama popravilo neefikasnosti i nelogičnosti koje su postojale u ovoj verziji. Osobno nisam sve još razumio jer se angualr bazira više na poznavanju informacija vezanih uz sam framework nego na logici algoritama. Ono što radi u front endu su registracija, login i note change. Aplikacija je sastavljena od vise komponenti koje se ucitavaju po potrebi bez reloada stranice (singlepage app). 
+*Budući da zadnjih godina nisam doticao PHP odlučio sam projekt raditi u javascriptu, PHP jednostavnu verziju sam napravio u zadnja dva sata prije roka čisto kao primjer i dokaz, da sam se bavio phpom napravio bih vrlo kompleksnu aplikaciju u manje vremena. Primjer e može naći na repozitoriju https://github.com/martinmarkovic/jednostavnaPHPVerzija *

@@ -1,8 +1,9 @@
 <div>
-      <app-header></app-header>
-      
+    <app-header></app-header>
+    
 </div>
 <div class="editUser" *ngIf="user">
+<<<<<<< HEAD
     <form [formGroup]="rForm" (ngSubmit)="promjenaMaila(rForm.value)">
         {{user.username|uppercase}} <br><br>
          <p><label> Želite li promjeniti e-mail?</label><br><input type="text" formControlName="email"[(ngModel)]="user.email"></p>
@@ -10,3 +11,13 @@
         <button type="submit">Promjena</button>
     </form>
  </div>
+=======
+  <form [formGroup]="rForm" (ngSubmit)="promjenaMaila(rForm.value)">
+      {{user.username|uppercase}} <br><br>
+       <p><label> Želite li promjeniti e-mail?</label><br><input type="text" formControlName="email"[(ngModel)]="user.email"></p>
+      <br>
+      <button type="submit">Promjena</button><br><br>
+      Obrišite account ovdje <br><br><button onclick="softDelete()">Delete</button>
+  </form>
+</div>
+>>>>>>> v1.3
